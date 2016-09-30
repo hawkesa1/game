@@ -1,0 +1,231 @@
+.wordSelected {
+	
+}
+
+.word {
+	font-family: Calibri;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 140;
+	color: white;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.wordBeingAdded {
+	color: #7FFF00;
+	text-decoration:underline;
+}
+
+span.wordHovered{
+	color: orange;
+}
+
+.wordHasTime {
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+span.wordPlaying {
+	text-decoration: underline;
+	color: #00ff00;
+}
+
+.nextWordToAdd {
+	color: orange;
+}
+
+
+a.playLine:link {
+    font-family: Calibri;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 140;
+	color: white;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+a.playLine:visited {
+    color: black;
+}
+a.playLine:hover {
+    color: orange;
+}
+a.playLine:active {
+    color: #00ff00;
+}
+
+a.playLine.playLineDisabled {
+	color:grey;
+	cursor:not-allowed;
+	text-decoration:none;
+    pointer-events: none;
+}
+
+
+
+
+.disabledButton {
+	opacity: 0.65;"C:/Users/Hawkes/Desktop/The Hardest Way To Make An Eas (1).MP3"
+	cursor: not-allowed;
+}
+
+#lyricText {
+	font-family: Calibri;
+	font-size: 20px;
+	font-style: normal;
+	
+	overflow-y: scroll;
+	width: 100%;
+	height: 100%;
+	resize: none;
+	padding: 0px;
+	
+	
+	margin: 0px;
+	border: 0px;
+	display: none;
+	color:white;
+	background-color:black;
+	opacity:0.8;
+}
+
+textarea:focus { 
+    outline: none !important;
+    border-color: 0px;
+}
+
+#editButton
+{
+	position:relative;
+	left:678px;
+	top:18px;
+	z-index:200;
+}
+#recordButton
+{
+	position:relative;
+	left:677px;
+	top:18px;
+	z-index:200;
+}
+
+div.hiddenDiv
+{
+	display:none;
+}
+
+
+
+
+#lyrics {
+	
+	overflow-y: scroll;
+	width: 800px;
+	height: 220px;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid #1a1a1a;
+	
+	
+	background-color:black;
+	opacity:0.8;
+}
+
+#wordInfo {
+	width: 400px;
+	height: 200px;
+	border: 1px solid black;
+	display: none;
+}
+
+#lyricButtonContainer {
+	margin: 0px;
+	padding:0px;
+	border: 0px;
+	padding-top:10px;
+	background-color: none;
+
+	
+	width: 790px;
+	height: 20px;
+}
+
+#lyricsContainer { 
+	border: 0px solid #a6a6a6;
+	margin-top: 10px;
+	margin-bottom:10px;
+	width: 800px;
+	overflow: none;
+	height: 220px;
+	padding-top:5px;
+	padding-bottom:10px;
+}
+
+
+
+#currentWord {
+	display: none;
+	border: 0px solid blue;
+	width: 200px;
+	height: 50px;
+	font-size: 20px;
+	background-color: white;
+	opacity: 0.5;
+	align: center;
+}
+
+#fps {
+	display: none;
+}
+
+.hiddenTab {
+	display: none;
+}
+
+.visibleTab {
+	display: block;
+}
+
+#newTab {
+	
+}
+
+#currentTab {
+	
+}
+
+#loadTab {
+	
+}
+
+#audio {
+	display: none;
+}
+
+.button {
+	background-color: white; /* Green */
+	border: 1px solid #b3d1ff;
+	border-bottom:0px;
+	
+	color: #117dbb;
+	width: 50px;
+	height: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 10px;
+	position:relative;
+	top:1px;
+}
+
+/*
+http: //mikethedj4.github.io /Webkit-Scrollbar-Generator/
+ */ 

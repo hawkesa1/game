@@ -1,0 +1,80 @@
+.hiddenButton
+{
+	visibility:hidden;
+}
+
+.controlButtonsContainer {
+	text-align: center;
+	border: 0px;
+	width: 800px;
+	background-color: none;
+}
+
+.buttonType1ContainerMedium {
+	display: inline-block;
+	text-align: center;
+	border: 0px;
+	width: 50px;
+	margin-right: 5px;
+}
+
+.buttonType1ContainerLarge {
+	display: inline-block;
+	text-align: center;
+	width: 100px;
+	border: 0px;
+	margin-right: 5px;
+}
+
+.buttonType1ContainerSmall {
+	display: inline-block;
+	text-align: center;
+	width: 50px;
+	height: 40px;
+	border: 0px;
+	margin-right: 5px;
+}
+
+.buttonType1 {
+	/*http://www.bestcssbuttongenerator.com*/
+	
+	background-color: none;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 5px;
+	border: 1px solid #1a1a1a;
+	display: inline-block;
+	cursor: pointer;
+	color: white;
+	font-family: Calibri;
+	font-size: 20px;
+	
+	text-decoration:underline;
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+	text-shadow: -9px 2px 19px #ffffff;
+}
+
+.buttonType1:hover {
+	-moz-box-shadow: 0px 0px 2px 1px #00ff00;
+	-webkit-box-shadow: 0px 0px 2px 1px #00ff00;
+	box-shadow: 0px 0px 2px 1px #00ff00;
+}
+
+.buttonType1:active {
+	position: relative;
+	top: 1px;
+	-moz-box-shadow: 0px 0px 8px 1px #cf8080;
+	-webkit-box-shadow: 0px 0px 8px 1px #cf8080;
+	box-shadow: 0px 0px 8px 1px #cf8080;
+}
+
+.activeProgramatically {
+	position: relative;
+	top: 1px;
+	-moz-box-shadow: 0px 0px 8px 1px #00ff00;
+	-webkit-box-shadow: 0px 0px 8px 1px #00ff00;
+	box-shadow: 0px 0px 8px 1px #00ff00;
+}

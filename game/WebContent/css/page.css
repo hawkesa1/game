@@ -1,0 +1,124 @@
+body {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	background-color:black;
+	
+}
+
+#currentWord1
+{
+	color:white;
+}
+#headerContainer {
+	width: 100%;
+	background-color: none;
+	//border-bottom: 1px solid #33ff33;
+	height: 60px;
+}
+
+#trackDetails
+{
+	
+}
+
+#headerTitle {
+font-family: Calibri;
+	
+	font-size: 20px;
+	font-weight: 300;
+	height: 60px;
+	letter-spacing: 0px;
+	line-height: 40px;
+	margin: 0 auto;
+	width: 802px;
+	color:white;
+}
+
+#skull
+{
+	width:33px;
+	height:40px;
+	position:absolute;
+	top:10px;
+}
+#headerText
+{
+	position:relative;
+	left:40px;
+	top:10px;
+}
+
+#mainContainer {
+	margin: 0 auto;
+	margin-top:5px;
+	width: 800px;
+	//border: 1px solid #33ff33;
+	height: 800px;
+	background-color:none;
+}
+
+#canvasContainerBackground {
+	position:relative;
+	width: 800px;
+	height: 200px;
+	background-color:black;
+	opacity:0.7;
+	top:20px;
+	z-index:2;
+}
+#canvasContainer {
+	width: 800px;
+	height: 200px;
+	border: 1px solid #1a1a1a;
+	margin-bottom:20px;
+	margin-top:20px;
+	background-color:none;
+	z-index:3;
+	
+	position:relative;
+}
+#canvas1
+{
+	z-index:4;
+}
+
+
+table#tracks {
+	font-family: Calibri;
+	font-size: 20px;
+	font-style: normal;
+	color: #a6a6a6;
+	
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 10px;
+	
+}
+
+table#tracks td {
+	vertical-align: top;
+	text-align: left;
+	padding-left: 0px;
+	padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+table#tracks th {
+	color:white;
+	vertical-align: top;
+	text-align: left;
+	padding-left: 0px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+td.trackTableRight {
+	vertical-align: top;
+	text-align: right;
+	padding-left: 0px;
+	padding-right: 30px;
+	color: blue;
+}

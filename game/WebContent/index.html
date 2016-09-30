@@ -3,8 +3,113 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Game</title>
+
+<link rel="stylesheet" href="css/page.css" media="screen" />
+<link rel="stylesheet" href="css/fileUpload.css" media="screen" />
+<link rel="stylesheet" href="css/buttons.css" media="screen" />
+<link rel="stylesheet" href="css/lyrics.css" media="screen" />
+
+<script src="./javascript/external/jquery/jquery-3.1.0.min.js"
+	type="text/javascript"></script>
+	
+	<script src="./javascript/external/jquery/jquery-json.js"
+	type="text/javascript"></script>
+	
+	<script src="./javascript/external/id3/binaryfile.js"
+	type="text/javascript"></script>
+<script src="./javascript/external/id3/bufferedbinaryajax.js"
+	type="text/javascript"></script>
+<script src="./javascript/external/id3/filereader.js"
+	type="text/javascript"></script>
+<script src="./javascript/external/id3/id3.js" type="text/javascript"></script>
+<script src="./javascript/external/id3/id3v1.js" type="text/javascript"></script>
+<script src="./javascript/external/id3/id3v2frames.js"
+	type="text/javascript"></script>
+<script src="./javascript/external/id3/id3v2.js" type="text/javascript"></script>
+<script src="./javascript/external/id3/id4.js" type="text/javascript"></script>
+<script src="./javascript/external/id3/stringutils.js"
+	type="text/javascript"></script>
+	
+	
+	<script src="./javascript/application/events.js" type="text/javascript"></script>
+<script src="./javascript/application/main.js" type="text/javascript"></script>
+<script src="./javascript/application/FileUploader.js"
+	type="text/javascript"></script>
+	<script src="./javascript/application/LyricTracker.js"
+	type="text/javascript"></script>
+	<script src="./javascript/application/TextTracker.js"
+	type="text/javascript"></script>
+<script src="./javascript/application/pageControls.js"
+	type="text/javascript"></script>
+<script src="./javascript/application/words.js" type="text/javascript"></script>
+<script src="./javascript/application/AjaxCalls.js"
+	type="text/javascript"></script>
 </head>
 <body>
-
+	<div id="headerContainer">
+		<div id="headerTitle">
+			<span id="headerText">lyricRecorder.com</span>
+		</div>
+	</div>
+	<div id="mainContainer">
+		<div id="trackDetails">
+			<table id="tracks">
+				<tr>
+					<th>Title</th>
+					<th>Artist</th>
+					<th>Album</th>
+				</tr>
+				<tr>
+					<td width="33%"><span id="trackTitle">XXX</span></td>
+					<td width="33%"><span id="trackArtist">XXX</span></td>
+					<td width="33%"><span id="trackAlbum">XXX</span></td>
+				</tr>
+			</table>
+		</div>
+		<div style="position: relative; width: 0; height: 0">
+			<div id="canvasContainerBackground">&nbsp;</div>
+		</div>
+		<div>
+			<div id="canvasContainer"></div>
+			<audio src="" id="audio">
+			</audio>
+		</div>
+		<div class="controlButtonsContainer">
+		
+			<div class="buttonType1ContainerMedium">
+				<a href="#" class="buttonType1" id="playPauseButton">Play</a>
+				<a href="#" class="buttonType1" id="clickButton">Click</a>
+			</div>
+			
+		</div>
+		<div style="position: relative; width: 0; height: 0">
+			<div id="editButton" class="hiddenDiv">
+				<div class="buttonType1ContainerLarge">
+					<a href="#" class="buttonType1" id="enableTextView">Edit</a>
+				</div>
+			</div>
+		</div>
+		<div style="position: relative; width: 0; height: 0">
+			<div id="recordButton" class="hiddenDiv">
+				<div class="buttonType1ContainerLarge">
+					<a href="#" class="buttonType1" id="enableWordView">Record</a>
+				</div>
+			</div>
+		</div>
+		<div id="lyricsContainer">
+			<textarea id="lyricText"></textarea>
+			<div id="lyrics"></div>
+		</div>
+		
+		<div id="currentWord1">Hello</div>
+		
+		<div id="downloadableLink"></div>
+		<div id="fileUploadHolder">
+			<p class="holderMessage">* Drag an audio file here to begin.
+				Maximum file size 15 Mb. Supported formats include: mp3, wav, wma,
+				m4a, mid, flac, mov, amr, aac, au, aif, raw, dvf, vox, cda</p>
+		</div>
+	</div>
+	
 </body>
 </html>
