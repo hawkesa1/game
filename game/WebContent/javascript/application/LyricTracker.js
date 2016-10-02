@@ -216,32 +216,7 @@ var LyricTracker = function(container) {
 		isAWordHovered = false;
 		isAWordEdgeHovered = false;
 
-		for (var i = 0; i < currentStateStore.gameClicks.length; i++) {
-			aGameClick = currentStateStore.gameClicks[i];
-			if (aGameClick.startTime) {
-				var startTime = aGameClick.startTime / 10;
-				if (startTime < this.startTime + 300) {
-					// the word currently being drawn
-					var endTime = aGameClick.endTime / 10;
-					if (!endTime && startTime < this.startTime) {
-						endTime = this.startTime;
-					}
-					if (startTime + (endTime - startTime) + 100 > this.startTime) {
-						var clickClickX = (((startTime - this.startTime) + 100) * this.pointSpacing)
-								+ this.xShift;
-						var width = ((endTime - startTime)) * this.pointSpacing;
-
-						ctx.globalAlpha = 0.5;
-						ctx.strokeRect(clickClickX, wordBoxY-30, width,
-								wordBoxHeight);
-						ctx.fillRect(wordX, wordBoxY-30, width, wordBoxHeight);
-						ctx.globalAlpha = 1;
-
-					}
-
-				}
-			}
-		}
+		
 
 		for (var i = 0; i < currentStateStore.onlyWordsArray.length; i++) {
 			aWord = currentStateStore.onlyWordsArray[i];
@@ -268,139 +243,75 @@ var LyricTracker = function(container) {
 						if (startTime < this.startTime
 								&& endTime > this.startTime) {
 							isAWordPlaying = true;
+
+
 							if (currentStateStore.currentPlayingWordId != aWord.id) {
 								currentStateStore.currentPlayingWordId = aWord.id;
 								currentStateStore.currentPlayingWord = aWord;
 								changeCurrentPlayingWordId();
 							}
-						}
-
-						// Allow a word to be selected if it is currently paused
-						if (clickedWhilePausedX > 0) {
-							if (clickedWhilePausedX > wordX
-									&& clickedWhilePausedX < wordX + width) {
-								if (clickedWhilePausedX > wordX
-										&& clickedWhilePausedX < wordX + 5) {
-									startOfWordMouseDownX = clickedWhilePausedX;
-									// end
-								} else if (clickedWhilePausedX > (wordX + width - 5)
-										&& clickedWhilePausedX < wordX + width) {
-									endOfWordMouseDownX = clickedWhilePausedX;
-								} else {
-									// middle
-									middleOfWordMouseDownX = clickedWhilePausedX;
-								}
-								clickedWhilePausedX = 0;
-								currentStateStore.currentSelectedWordId = aWord.id;
-								currentStateStore.currentSelectedWord = aWord;
-								changeCurrentSelectedWord();
+							if (currentStateStore.currentlyAddingGameClick) {
+								currentStateStore.currentPlayingWord.hasBeenClicked = true;
 							}
 						}
-						if (hoverWhilePausedX > 0
-								&& (hoverWhilePausedX >= wordX && hoverWhilePausedX <= wordX
-										+ width)) {
-							// start
-							if (hoverWhilePausedX > wordX
-									&& hoverWhilePausedX <= wordX + 5) {
-								isAWordEdgeHovered = true;
-								// end
-							} else if (hoverWhilePausedX >= (wordX + width - 5)
-									&& hoverWhilePausedX <= wordX + width) {
-								isAWordEdgeHovered = true;
-
-							} else {
-								// middle
-								isAWordHovered = true;
-							}
-							currentStateStore.currentHoveredWordId = aWord.id;
-						} else {
-							currentStateStore.currentHoveredWordId = ""
-						}
-						if (doubleClickedWhilePausedX > 0
-								&& (doubleClickedWhilePausedX > wordX && doubleClickedWhilePausedX < wordX
-										+ width)) {
-							doubleClickedWhilePausedX = 0;
-							currentStateStore.currentDoubleClickedWordId = aWord.id;
-							playWord(aWord);
-						}
-
-						if (aWord.id == currentStateStore.currentSelectedWordId) {
-							if (aWord.id == currentStateStore.currentPlayingWordId) {
-								ctx.fillStyle = wordPlayingColour;
-							} else {
-								ctx.fillStyle = wordSelectedColour;
-							}
+						
+						ctx.strokeRect(wordX, wordBoxY, width,
+								wordBoxHeight);
+						ctx.fillRect(wordX, wordBoxY, width, wordBoxHeight);
+						
+						if (aWord.hasBeenClicked) {
 							ctx.save();
-							ctx.strokeStyle = wordStandardColour;
+							ctx.globalAlpha=0.2;
+							ctx.fillStyle = "white";
+							ctx.strokeStyle = "green";
 							ctx.strokeRect(wordX, wordBoxY, width,
 									wordBoxHeight);
 							ctx.fillRect(wordX, wordBoxY, width, wordBoxHeight);
+							ctx.globalAlpha=0.2;
 							ctx.restore();
-
-							// Start
-							ctx.beginPath();
-							ctx.moveTo(wordX + 1, wordBoxY);
-							ctx.lineTo(wordX + 1, (wordBoxY + wordBoxHeight));
-							ctx.lineWidth = 4;
-							ctx.strokeStyle = wordEdgeColour;
-							ctx.globalAlpha = 0.5;
-							ctx.stroke();
-
-							// and End Lines
-							ctx.beginPath();
-							ctx.moveTo(wordX + width - 2, wordBoxY);
-							ctx.lineTo(wordX + width - 2,
-									(wordBoxY + wordBoxHeight));
-							ctx.lineWidth = 4;
-							ctx.strokeStyle = wordEdgeColour;
-							ctx.globalAlpha = 0.5;
-							ctx.save();
-							ctx.stroke();
-							ctx.restore();
-							ctx.globalAlpha = 1;
-							ctx.lineWidth = 1;
-						} else if ((aWord.id == currentStateStore.currentHoveredWordId)) {
-							if (aWord.id == currentStateStore.currentPlayingWordId) {
-								ctx.fillStyle = wordPlayingColour;
-								ctx.strokeStyle = wordStandardColour;
-							} else {
-								ctx.fillStyle = wordHoveredColour;
-								ctx.strokeStyle = wordStandardColour;
-							}
-							ctx.save();
-							ctx.globalAlpha = 0.5;
-							ctx.strokeRect(wordX, wordBoxY, width,
-									wordBoxHeight);
-							ctx.fillRect(wordX, wordBoxY, width, wordBoxHeight);
-							ctx.globalAlpha = 1;
-							ctx.restore();
-						} else {
-							if (aWord.id == currentStateStore.currentPlayingWordId) {
-								ctx.fillStyle = wordPlayingColour;
-								// ctx.fillStyle = "black";
-							} else {
-								ctx.fillStyle = canvasFontTextColour;
-							}
-							ctx.save();
-							if (aWord.id == currentStateStore.currentPlayingWordId) {
-								ctx.fillStyle = wordPlayingColour;
-							} else {
-								ctx.fillStyle = "white";
-								ctx.strokeStyle = wordStandardColour;
-							}
-
-							ctx.globalAlpha = 0.5;
-							ctx.strokeRect(wordX, wordBoxY, width,
-									wordBoxHeight);
-							ctx.fillRect(wordX, wordBoxY, width, wordBoxHeight);
-							ctx.restore();
-							ctx.globalAlpha = 1;
 						}
+						
+						
+
 						ctx.font = canvasFontText;
 						// ctx.fillStyle = wordStandardColour;
 						ctx.fillText(aWord.word, wordX, (wordBoxY
 								+ wordBoxHeight + 15))
 					}
+				}
+			}
+		}
+		
+		for (var i = 0; i < currentStateStore.gameClicks.length; i++) {
+			aGameClick = currentStateStore.gameClicks[i];
+			if (aGameClick.startTime) {
+				var startTime = aGameClick.startTime / 10;
+				if (startTime < this.startTime + 300) {
+					// the word currently being drawn
+					var endTime = aGameClick.endTime / 10;
+					if (!endTime && startTime < this.startTime) {
+						endTime = this.startTime;
+					}
+					if (startTime + (endTime - startTime) + 100 > this.startTime) {
+						var clickClickX = (((startTime - this.startTime) + 100) * this.pointSpacing)
+								+ this.xShift;
+						var width = ((endTime - startTime)) * this.pointSpacing;
+
+						ctx.globalAlpha = 0.8;
+						ctx.save();
+						ctx.fillStyle = "green";
+						ctx.strokeStyle = "green";
+						ctx.strokeRect(clickClickX, wordBoxY, width,
+								wordBoxHeight);
+						ctx.fillRect(clickClickX, wordBoxY, width,
+								wordBoxHeight);
+						
+						ctx.restore();
+						ctx.globalAlpha = 1;
+						
+
+					}
+
 				}
 			}
 		}
@@ -415,38 +326,6 @@ var LyricTracker = function(container) {
 		for (var i = this.startTime; i < (this.startTime + (this.drawTime)); i++) {
 			if (firstPass) {
 				firstPass = false;
-			}
-		}
-
-		// Draw Numbers
-		var point = 0;
-		var bTime = 0;
-		for (var i = this.startTime; i < (this.startTime + (this.drawTime)); i++) {
-			this.pointX = ((i - this.startTime) * this.pointSpacing)
-					+ this.xShift;
-			point = 0;
-			if (i < this.wavePoints.length) {
-				bTime = this.wavePoints[i].time;
-				point = this.wavePoints[i].yHigh;
-			} else {
-				point = 0;
-			}
-			tenths++;
-			if (i % 10 == 0 && tenths != 0 && tenths != 100) {
-				ctx.font = canvasFontMarker;
-				ctx.fillStyle = canvasFontMarkerColour;
-				ctx.fillText("|", this.pointX - 2, 131);
-				ctx.fillText("|", this.pointX - 2, 37);
-
-			}
-			if (i % 100 == 0) {
-				ctx.font = canvasFontMarker;
-				ctx.fillStyle = canvasFontMarkerColour;
-				ctx
-						.fillText(secondsToTime((i / 100) - 1),
-								this.pointX - 2, 131);
-				ctx.fillText(secondsToTime((i / 100) - 1), this.pointX - 2, 37);
-				tenths = 0;
 			}
 		}
 

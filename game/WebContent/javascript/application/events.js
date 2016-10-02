@@ -210,8 +210,8 @@ $(document).keydown(
 			if (e.which == 32 && !spaceIsDown
 					&& currentStateStore.currentLyricView === "WORD_VIEW") {
 				e.preventDefault();
-				$('#addCurrentWord').mousedown();
-				$('#addCurrentWord').addClass("activeProgramatically");
+				$('#clickButton').mousedown();
+				$('#clickButton').addClass("activeProgramatically");
 				spaceIsDown = true;
 			}
 		});
@@ -221,9 +221,9 @@ $(document).keyup(function(e) {
 	}
 	if (e.which == 32 && currentStateStore.currentLyricView === "WORD_VIEW") {
 		e.preventDefault();
-		$('#addCurrentWord').mouseup();
+		$('#clickButton').mouseup();
 	}
-	$('#addCurrentWord').removeClass("activeProgramatically");
+	$('#clickButton').removeClass("activeProgramatically");
 	spaceIsDown = false;
 	return true;
 });

@@ -323,6 +323,7 @@ function Word(startTime, endTime, text) {
 	this.startTime = startTime;
 	this.endTime = endTime;
 	this.text = text;
+	this.hasBeenClicked=false;
 }
 function loadTrack() {
 	var selectedValue = $('#loadTrack').find(":selected").val();

@@ -7,8 +7,8 @@ function CurrentStateStore()
 	this.missedClickTime=0;
 	
 	this.gameClicks= new Array();
-	this.gameClicks.push(new GameClick(1000,2000));
-	this.gameClicks.push(new GameClick(3000,4000));
+	//this.gameClicks.push(new GameClick(1000,2000));
+	//this.gameClicks.push(new GameClick(3000,4000));
 	this.currentlyAddingGameClick=false;
 	
 	this.onlyWordsArray = new Array();
